@@ -38,7 +38,7 @@ World
 ```
 
 ### Best Practise
-```
+```typescript
 function App(){
     return <div>
     HI
