@@ -27,3 +27,12 @@ function Button(props: {}, ...childs: HTMLElement[]) {
 }
 document.body.append(<Button />)
 ```
+
+If you want to use jsx-fragments in toplevel, you need to spread its result
+```typescript
+document.body.append(...<>
+Hello
+<span> </span>
+World
+</>)
+```
