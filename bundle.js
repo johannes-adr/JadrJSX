@@ -47,28 +47,28 @@ class JSX {
         return element;
     }
     static f() { }
-}
-function useState(state, renderElem) {
-    let activeElem = renderElem();
-    let internmap = { ...state };
-    if (Array.isArray(activeElem)) {
+    static useState(state, renderElem) {
+        let activeElem = renderElem();
+        let internmap = { ...state };
+        if (Array.isArray(activeElem)) {
+            return activeElem;
+        }
+        for (let p in state) {
+            Object.defineProperty(state, p, {
+                get: () => {
+                    return internmap[p];
+                },
+                set: (v) => {
+                    internmap[p] = v;
+                    let r = activeElem.getRootNode();
+                    if (r !== undefined) {
+                        let ae = renderElem();
+                        activeElem.replaceWith(ae);
+                        activeElem = ae;
+                    }
+                }
+            });
+        }
         return activeElem;
     }
-    for (let p in state) {
-        Object.defineProperty(state, p, {
-            get: () => {
-                return internmap[p];
-            },
-            set: (v) => {
-                internmap[p] = v;
-                let r = activeElem.getRootNode();
-                if (r !== undefined) {
-                    let ae = renderElem();
-                    activeElem.replaceWith(ae);
-                    activeElem = ae;
-                }
-            }
-        });
-    }
-    return activeElem;
 }
