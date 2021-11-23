@@ -1,4 +1,4 @@
-# JadrJSX
+# JadrJSX - 720 bytes JSX consumer + State management
 
 ### Embed in HTML
 ```html
