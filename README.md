@@ -41,9 +41,6 @@ function App() {
 }
 
 document.body.append(...[<App />].flat(1))
-}
-
-document.body.append(...[<App />].flat(1))
 ```
 
 If you want to use jsx-fragments in toplevel, you need to spread its result
