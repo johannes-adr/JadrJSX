@@ -27,6 +27,20 @@ function Button(props: {}, ...childs: HTMLElement[]) {
 }
 document.body.append(<Button />)
 ```
+#### State management:
+```typescript
+let useState = JSX.useState
+function App(){
+    let state = {counter: 0}
+    return useState(state,()=><div id="root">
+        <button onClick={()=>state.counter++}>+1</button>
+        <button onClick={()=>state.counter--}>-1</button> <br />
+        Current count: {state.counter}
+    </div>)
+}
+
+document.body.append(...[<App />].flat(1))
+```
 
 If you want to use jsx-fragments in toplevel, you need to spread its result
 ```typescript
