@@ -36,3 +36,15 @@ Hello
 World
 </>)
 ```
+
+### Best Practise
+```
+function App(){
+    return <div>
+    HI
+    </div>
+}
+
+document.body.append(...[<App />].flat(1))
+```
+by flatting the Array you ensure that the code keeps working even if the app main component is a fragment
